@@ -3,26 +3,16 @@ import {useState, useEffect} from "react";
 import getUser from '../../Hook/Query/useGetUser'
 
 
-const LoginPage = () => {
+const LoginPage = ({setIsLogged}) => {
 
     const [ formSubmitting, setFormSubmitting ] = useState(false);
-    const handleSubmit = async (credentials) => {
-        setFormSubmitting(true);
-        try {
-           
-        } catch (error) {
-            console.log(error);
-            // message
-        } finally {
-            setFormSubmitting(false);
-        }
-    };
-
+    
+    
     return(
         <div>
             
             <LoginForm
-                handleSubmit={handleSubmit}
+                setIsLogged={setIsLogged}
             />
 
         </div>

@@ -1,6 +1,21 @@
 import { Outlet, Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from 'react';
 
-const Layout = () => {
+const Layout = ({isLogged}) => {
+
+
+    const [login, setLogin] = useState(null)
+
+    useEffect(() => {
+
+        if(!isLogged){
+            setLogin(<Link to="/login">Login</Link>)
+        } else {
+            setLogin(<Link to="/logout">Logout</Link>)
+        }
+    }, [isLogged])
+
+
   return (
     <>
       <nav>
@@ -9,7 +24,7 @@ const Layout = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            {login}
           </li>
         </ul>
       </nav>

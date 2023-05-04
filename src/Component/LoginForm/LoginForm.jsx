@@ -7,14 +7,17 @@ import getUser from '../../Hook/Query/useGetUser'
 
 // Style imports
 import './LoginForm.css';
+import { useNavigate } from 'react-router-dom';
 
-const LoginForm = ({handleSubmit}) => {
+const LoginForm = ({setIsLogged}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigate = useNavigate()
+
     const handleSubmitForm = async(event) => {
         event.preventDefault();
-        getUser(email, password)
+        getUser(email, password, navigate, setIsLogged)
     };
     //TODO Add Credentials Inputs (With Input Component)
     return (
