@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate  } from "react-router-dom";
 import Home from './Page/Home/Home'
 import Login from './Page/Login/LoginPage'
+import Layout from './Component/Layout/Layout'
 
 export function RequireAuth({ children }) {
     // Used to ensure the refreshToken is called once at a time
@@ -22,12 +23,14 @@ function App() {
       //TODO ROUTER
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={
-            <RequireAuth>
-                <Home />
-            </RequireAuth>
-        } />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Layout />}>
+            <Route index element={
+                <RequireAuth>
+                    <Home />
+                </RequireAuth>
+            } />
+            <Route path="/login" element={<Login />} />
+        </Route>  
       </Routes>
     </BrowserRouter>
   );
