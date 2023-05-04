@@ -1,49 +1,29 @@
 // Genral imports
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+
+import Input from '../Input/Input'
+import getUser from '../../Hook/Query/useGetUser'
 
 // Style imports
 import './LoginForm.css';
 
 const LoginForm = ({handleSubmit}) => {
-
-    const [credentials, setCredentials] = useState({
-        login: '',
-        password: ''
-    });
-
-    const handleChange = ({key, value}) => {
-        setCredentials((prevState) => {
-            return {...prevState, [key]: value};
-        });
-    };
-
-    const handleLoginChange = (event) => {
-        handleChange({
-            key: 'login',
-            value: event.currentTarget.value
-        });
-    };
-
-    const handlePasswordChange = (event) => {
-        handleChange({
-            key: 'password',
-            value: event.currentTarget.value
-        });
-    };
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleSubmitForm = async(event) => {
         event.preventDefault();
-        await handleSubmit(credentials);
+        getUser(email, password)
     };
     //TODO Add Credentials Inputs (With Input Component)
     return (
         <>
-
             <form id="login-form" onSubmit={handleSubmitForm}>
 
                 <div className='credentials-and-password-container'>
-
+                    <Input placeholder={'Email'} type={'text'} handleChange={(e) => setEmail(e.target.value)} />
+                    <Input placeholder={'Mot de passe'} type={'password'} handleChange={(e) => setPassword(e.target.value)}/>
                     <button
                         className='login-page-call-to-action'
                         type="submit"

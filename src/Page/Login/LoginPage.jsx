@@ -1,5 +1,6 @@
 import LoginForm from "../../Component/LoginForm/LoginForm";
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import getUser from '../../Hook/Query/useGetUser'
 
 
 const LoginPage = () => {
@@ -8,7 +9,7 @@ const LoginPage = () => {
     const handleSubmit = async (credentials) => {
         setFormSubmitting(true);
         try {
-            //TODO Make Login call
+           
         } catch (error) {
             console.log(error);
             // message
@@ -19,7 +20,7 @@ const LoginPage = () => {
 
     return(
         <div>
-
+            
             <LoginForm
                 handleSubmit={handleSubmit}
             />
