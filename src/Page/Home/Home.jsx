@@ -24,7 +24,8 @@ const HomePage = () => {
     const style = {
         ul: {
             display:'flex',
-            flexWrap:'wrap'
+            flexWrap:'wrap',
+            justifyContent:'center'
         },
         li:{
             listStyle:'none',
@@ -39,14 +40,17 @@ const HomePage = () => {
             minHeight :'300px',
             height:'300px',
             objectFit :'cover'
+        },
+        titre:{
+            textAlign:'center'
         }
     }
 
 
     return(
         <div>  
-            <p>Vous êtes connecté !</p>
-            <p>Liste des chats :  </p> 
+            <h3 style={style.titre}>Vous êtes connecté !</h3>
+            <h1 style={style.titre}>Liste des chats :  </h1> 
             {data ?
             <ul style={style.ul}>
                 {data.data['hydra:member'].map((item) => 

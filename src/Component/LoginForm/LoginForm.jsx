@@ -19,10 +19,28 @@ const LoginForm = ({setIsLogged}) => {
         event.preventDefault();
         getUser(email, password, navigate, setIsLogged)
     };
-    //TODO Add Credentials Inputs (With Input Component)
+
+
+    const style = {
+        button:{
+            backgroundColor:'#89CFF0',
+            border:'none',
+            padding:'10px',
+            marginTop:'10px',
+            color:'white',
+            cursor:'pointer',
+        },
+        form:{
+            margin:'100px auto',
+            width:'fit-content',
+            textAlign:'center'
+        }
+    }
+    
+
     return (
         <>
-            <form id="login-form" onSubmit={handleSubmitForm}>
+            <form id="login-form" onSubmit={handleSubmitForm}  style={style.form}>
 
                 <div className='credentials-and-password-container'>
                     <Input placeholder={'Email'} type={'text'} handleChange={(e) => setEmail(e.target.value)} />
@@ -30,8 +48,9 @@ const LoginForm = ({setIsLogged}) => {
                     <button
                         className='login-page-call-to-action'
                         type="submit"
+                        style={style.button}
                     >
-                        Submit
+                        Se connecter
                     </button>
 
                 </div>
